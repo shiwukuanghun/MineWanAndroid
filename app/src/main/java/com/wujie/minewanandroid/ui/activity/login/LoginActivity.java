@@ -1,10 +1,12 @@
 package com.wujie.minewanandroid.ui.activity.login;
 
+import android.graphics.Color;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.jaeger.library.StatusBarUtil;
 import com.wujie.minewanandroid.BaseActivity;
 import com.wujie.minewanandroid.R;
 import com.wujie.minewanandroid.util.ARouterUtils;
@@ -35,7 +37,9 @@ public class LoginActivity extends BaseActivity<LoginPresenter, LoginContact.Vie
 
     @Override
     protected void init() {
-
+        StatusBarUtil.setColor(this, Color.BLACK);
+        StatusBarUtil.setDarkMode(this); //白字
+        StatusBarUtil.setLightMode(this); //黑字
     }
 
     @OnClick(R.id.btn_login)

@@ -60,4 +60,7 @@ dependencies {
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.44'
 
     implementation 'me.imid.swipebacklayout.lib:library:1.1.0'
+
+    //状态栏
+    implementation 'com.jaeger.statusbarutil:library:1.5.1'
 }
