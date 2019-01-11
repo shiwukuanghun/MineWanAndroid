@@ -11,6 +11,7 @@ import com.wujie.minewanandroid.R;
 import com.wujie.minewanandroid.adapter.HomeAdapter;
 import com.wujie.minewanandroid.bean.HomeBean;
 import com.wujie.minewanandroid.bean.PageListDataBean;
+import com.wujie.minewanandroid.ui.BaseFragment;
 import com.wujie.minewanandroid.ui.fragment.BasePresenterFragment;
 import com.wujie.minewanandroid.util.ARouterUtils;
 import com.wujie.minewanandroid.widget.StatusLayout;
@@ -24,7 +25,7 @@ import butterknife.BindView;
  * Created by HuangBin on 2018/11/29 11:50.
  * Description：
  */
-public class HomeFragment extends BasePresenterFragment<HomePresenter, HomeContact.View> implements HomeContact.View {
+public class HomeFragment extends BaseFragment<HomePresenter, HomeContact.View> implements HomeContact.View {
     @BindView(R.id.rv_home)
     RecyclerView mRvHome;
     @BindView(R.id.status_layout)

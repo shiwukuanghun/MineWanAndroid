@@ -11,6 +11,7 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.wujie.minewanandroid.R;
 import com.wujie.minewanandroid.adapter.KnowledgeAdapter;
 import com.wujie.minewanandroid.bean.KnowledgeBean;
+import com.wujie.minewanandroid.ui.BaseFragment;
 import com.wujie.minewanandroid.ui.fragment.BasePresenterFragment;
 
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ import butterknife.Unbinder;
  * Created by HuangBin on 2018/11/29 11:58.
  * Description：
  */
-public class KnowledgeFragment extends BasePresenterFragment<KnowledgePresenter, KnowledgeContact.View> implements KnowledgeContact.View {
+public class KnowledgeFragment extends BaseFragment<KnowledgePresenter, KnowledgeContact.View> implements KnowledgeContact.View {
     @BindView(R.id.rv_knowledge)
     RecyclerView mRvKnowledge;
     @BindView(R.id.msl)

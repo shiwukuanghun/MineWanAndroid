@@ -1,30 +1,26 @@
-package com.wujie.minewanandroid.ui;
+package com.wujie.commonmoudle.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.wujie.minewanandroid.R;
-import com.wujie.minewanandroid.presenter.BasePresenter;
-import com.wujie.minewanandroid.view.IBaseView;
+import com.wujie.commonmoudle.presenter.BasePresenter;
+import com.wujie.commonmoudle.view.IBaseView;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 /**
- * Created by HuangBin on 2018/11/29 21:17.
+ * Time：2019/1/11 0011 下午 14:01
+ * Author：WuChen
  * Description：
- */
+ **/
 public abstract class BaseFragment<P extends BasePresenter<V>, V extends IBaseView> extends Fragment implements IBaseView {
 
     protected P mPresenter;
-
     Unbinder unbinder;
 
     @Nullable
@@ -33,15 +29,14 @@ public abstract class BaseFragment<P extends BasePresenter<V>, V extends IBaseVi
         View view = inflater.inflate(getLayoutId(), container, false);
         unbinder = ButterKnife.bind(this, view);
         init(view);
+        mPresenter = createPresenter();
+        attachView();
         return view;
     }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mPresenter = createPresenter();
-        attachView();
-    }
+    protected abstract int getLayoutId();
+
+    protected abstract void init(View view);
 
     private void attachView() {
         if (mPresenter != null) {
@@ -55,11 +50,7 @@ public abstract class BaseFragment<P extends BasePresenter<V>, V extends IBaseVi
         }
     }
 
-    protected abstract int getLayoutId();
-
     protected abstract P createPresenter();
-
-    protected abstract void init(View view);
 
     @Override
     public void onDestroy() {
