@@ -146,7 +146,7 @@ LinearLayout mActivityMain;
                     mNavigationFragment = new NavigationFragment();
                     transaction.add(R.id.fl_container, mNavigationFragment, "2");
                 } else {
-                    transaction.show(mKnowledgeFragment);
+                    transaction.show(mNavigationFragment);
                 }
                 break;
             case R.id.rb_mine:
@@ -154,7 +154,7 @@ LinearLayout mActivityMain;
                     mMineFragment = new MineFragment();
                     transaction.add(R.id.fl_container, mMineFragment, "3");
                 } else {
-                    transaction.show(mHomeFragment);
+                    transaction.show(mMineFragment);
                 }
                 break;
         }
@@ -181,12 +181,16 @@ LinearLayout mActivityMain;
         super.onAttachFragment(fragment);
         if (mHomeFragment == null && fragment instanceof HomeFragment) {
             mHomeFragment = (HomeFragment) fragment;
+            getSupportFragmentManager().beginTransaction().hide(mHomeFragment).commit();
         } else if (mKnowledgeFragment == null && fragment instanceof KnowledgeFragment) {
             mKnowledgeFragment = (KnowledgeFragment) fragment;
+            getSupportFragmentManager().beginTransaction().hide(mKnowledgeFragment).commit();
         } else if (mNavigationFragment == null && fragment instanceof  NavigationFragment) {
             mNavigationFragment = (NavigationFragment) fragment;
+            getSupportFragmentManager().beginTransaction().hide(mNavigationFragment).commit();
         }else if (mMineFragment == null && fragment instanceof MineFragment) {
             mMineFragment = (MineFragment) fragment;
+            getSupportFragmentManager().beginTransaction().hide(mMineFragment).commit();
         }
     }
 
