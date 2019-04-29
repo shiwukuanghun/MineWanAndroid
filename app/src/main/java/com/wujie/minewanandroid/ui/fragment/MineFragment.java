@@ -50,11 +50,14 @@ public class MineFragment extends Fragment {
         unbinder.unbind();
     }
 
-    @OnClick({R.id.btn_login, R.id.btn_https})
+    @OnClick({R.id.btn_login, R.id.btn_register, R.id.btn_logout, R.id.btn_setting, R.id.btn_todo, R.id.btn_https})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_login:
                 ARouter.getInstance().build(ARouterUtils.LoginPath).navigation();
+                break;
+            case R.id.btn_register:
+                ARouter.getInstance().build(ARouterUtils.RegisterPath).navigation();
                 break;
             case R.id.btn_https:
                 //Latitude=39.922705&Longitude=116.416636&start=0&productName=华为&limit=10

@@ -11,6 +11,30 @@
         android:text="登录"/>
 
     <Button
+        android:id="@+id/btn_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="注册"/>
+
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="退出登录"/>
+
+    <Button
+        android:id="@+id/btn_setting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="设置"/>
+
+    <Button
+        android:id="@+id/btn_todo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TODO"/>
+
+    <Button
         android:id="@+id/btn_https"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

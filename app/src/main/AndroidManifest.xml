@@ -18,6 +18,7 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
             <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -43,6 +44,10 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
+        <activity android:name=".ui.activity.register.RegisterActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
