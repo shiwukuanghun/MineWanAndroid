@@ -32,15 +32,21 @@
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:text="首页"
-            android:gravity="center" />
+            android:gravity="center"
+            android:button="@null"
+            android:drawableTop="@drawable/tab_home_selector"
+            android:textColor="@color/tab_color_selector"/>
 
         <RadioButton
             android:id="@+id/rb_knowledge"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:text="知识体系"
-            android:gravity="center" />
+            android:text="体系"
+            android:gravity="center"
+            android:button="@null"
+            android:drawableTop="@drawable/tab_knowledge_selector"
+            android:textColor="@color/tab_color_selector"/>
 
         <RadioButton
             android:id="@+id/rb_navigation"
@@ -48,7 +54,21 @@
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:text="导航"
-            android:gravity="center" />
+            android:gravity="center"
+            android:button="@null"
+            android:drawableTop="@drawable/tab_navigation_selector"
+            android:textColor="@color/tab_color_selector"/>
+
+        <RadioButton
+            android:id="@+id/rb_project"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="项目"
+            android:gravity="center"
+            android:button="@null"
+            android:drawableTop="@drawable/tab_project_selector"
+            android:textColor="@color/tab_color_selector"/>
 
         <RadioButton
             android:id="@+id/rb_mine"
@@ -56,7 +76,10 @@
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:text="我的"
-            android:gravity="center" />
+            android:gravity="center"
+            android:button="@null"
+            android:drawableTop="@drawable/tab_mine_selector"
+            android:textColor="@color/tab_color_selector"/>
 
     </RadioGroup>
 
