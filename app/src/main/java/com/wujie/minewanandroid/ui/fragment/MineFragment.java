@@ -15,6 +15,7 @@ import com.wujie.minewanandroid.http.ApiServer;
 import com.wujie.minewanandroid.http.RxRetrofit;
 import com.wujie.minewanandroid.util.ARouterUtils;
 import com.wujie.minewanandroid.util.Constant;
+import com.wujie.minewanandroid.util.LoginUtils;
 import com.wujie.minewanandroid.util.RxHelper;
 
 import butterknife.BindView;
@@ -58,6 +59,13 @@ public class MineFragment extends Fragment {
                 break;
             case R.id.btn_register:
                 ARouter.getInstance().build(ARouterUtils.RegisterPath).navigation();
+                break;
+            case R.id.btn_todo:
+                if (!LoginUtils.isLogin()) {
+                    ARouter.getInstance().build(ARouterUtils.LoginPath).navigation();
+                    return;
+                }
+                ARouter.getInstance().build(ARouterUtils.TodoPath).navigation();
                 break;
             case R.id.btn_https:
                 //Latitude=39.922705&Longitude=116.416636&start=0&productName=华为&limit=10

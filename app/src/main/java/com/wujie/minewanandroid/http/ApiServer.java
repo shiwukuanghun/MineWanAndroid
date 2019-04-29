@@ -10,6 +10,7 @@ import com.wujie.minewanandroid.bean.NavigationBean;
 import com.wujie.minewanandroid.bean.PageListDataBean;
 import com.wujie.minewanandroid.bean.ProjectItemBean;
 import com.wujie.minewanandroid.bean.ProjectTypeBean;
+import com.wujie.minewanandroid.bean.TodoBean;
 
 import java.util.List;
 
@@ -71,4 +72,15 @@ public interface ApiServer {
 
     @GET("project/list/1/json")
     Observable<BaseBean<PageListDataBean<ProjectItemBean>>> getProjectList(@Query("cid") int cid);
+
+    //添加TODO
+    @POST("lg/todo/add/json")
+    @FormUrlEncoded
+    Observable<BaseBean<TodoBean>> addTodo(@Field("title") String title, @Field("content") String content, @Field("date") String date, @Field("type") int type, @Field("priority") int priority);
+//    Observable<BaseBean<TodoBean>> addTodo(@Query("title") String title, @Query("content") String content, @Query("date") String date, @Query("type") int type, @Query("priority") int priority);
+
+    //TODO列表
+    @POST("lg/todo/v2/list/{page}/json")
+    @FormUrlEncoded
+    Observable<BaseBean<PageListDataBean<TodoBean>>> getTodoList(@Path("page") int page, @Field("status") int status, @Field("type") int type, @Field("priority") int priority, @Field("orderby") int orderby);
 }
