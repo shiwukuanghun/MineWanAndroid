@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -15,6 +16,7 @@ import com.wujie.minewanandroid.ui.fragment.knowledage.KnowledgeFragment;
 import com.wujie.minewanandroid.ui.fragment.MineFragment;
 import com.wujie.minewanandroid.ui.fragment.navigation.NavigationFragment;
 import com.wujie.minewanandroid.ui.fragment.home.HomeFragment;
+import com.wujie.minewanandroid.ui.fragment.project.ProjectFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +49,7 @@ LinearLayout mActivityMain;
     private HomeFragment mHomeFragment;
     private KnowledgeFragment mKnowledgeFragment;
     private NavigationFragment mNavigationFragment;
+    private ProjectFragment mProjectFragment;
     private MineFragment mMineFragment;
 
     @Override
@@ -149,10 +152,18 @@ LinearLayout mActivityMain;
                     transaction.show(mNavigationFragment);
                 }
                 break;
+            case R.id.rb_project:
+                if (mProjectFragment == null) {
+                    mProjectFragment = new ProjectFragment();
+                    transaction.add(R.id.fl_container, mProjectFragment, "3");
+                } else {
+                    transaction.show(mProjectFragment);
+                }
+                break;
             case R.id.rb_mine:
                 if (mMineFragment == null) {
                     mMineFragment = new MineFragment();
-                    transaction.add(R.id.fl_container, mMineFragment, "3");
+                    transaction.add(R.id.fl_container, mMineFragment, "4");
                 } else {
                     transaction.show(mMineFragment);
                 }
@@ -171,6 +182,9 @@ LinearLayout mActivityMain;
         if (mNavigationFragment != null) {
             transaction.hide(mNavigationFragment);
         }
+        if (mProjectFragment != null) {
+            transaction.hide(mProjectFragment);
+        }
         if (mMineFragment != null) {
             transaction.hide(mMineFragment);
         }
@@ -188,6 +202,9 @@ LinearLayout mActivityMain;
         } else if (mNavigationFragment == null && fragment instanceof  NavigationFragment) {
             mNavigationFragment = (NavigationFragment) fragment;
             getSupportFragmentManager().beginTransaction().hide(mNavigationFragment).commit();
+        }else if (mProjectFragment == null && fragment instanceof ProjectFragment) {
+            mProjectFragment = (ProjectFragment) fragment;
+            getSupportFragmentManager().beginTransaction().hide(mProjectFragment).commit();
         }else if (mMineFragment == null && fragment instanceof MineFragment) {
             mMineFragment = (MineFragment) fragment;
             getSupportFragmentManager().beginTransaction().hide(mMineFragment).commit();

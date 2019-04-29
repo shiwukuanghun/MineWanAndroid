@@ -8,6 +8,8 @@ import com.wujie.minewanandroid.bean.HttpsRequest;
 import com.wujie.minewanandroid.bean.KnowledgeBean;
 import com.wujie.minewanandroid.bean.NavigationBean;
 import com.wujie.minewanandroid.bean.PageListDataBean;
+import com.wujie.minewanandroid.bean.ProjectItemBean;
+import com.wujie.minewanandroid.bean.ProjectTypeBean;
 
 import java.util.List;
 
@@ -63,4 +65,10 @@ public interface ApiServer {
 
     @GET("navi/json")
     Observable<BaseBean<List<NavigationBean>>> getNavigation();
+
+    @GET("project/tree/json")
+    Observable<BaseBean<List<ProjectTypeBean>>> getProjectType();
+
+    @GET("project/list/1/json")
+    Observable<BaseBean<PageListDataBean<ProjectItemBean>>> getProjectList(@Query("cid") int cid);
 }
