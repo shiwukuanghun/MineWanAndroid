@@ -63,4 +63,9 @@ dependencies {
 
     //状态栏
     implementation 'com.jaeger.statusbarutil:library:1.5.1'
+
+    //流式标签布局
+    implementation 'com.hyman:flowlayout-lib:1.1.2'
+
+    implementation 'q.rorbin:VerticalTabLayout:1.2.5'
 }

@@ -13,7 +13,7 @@ import com.wujie.minewanandroid.adapter.HomeAdapter;
 import com.wujie.minewanandroid.bean.HomeBean;
 import com.wujie.minewanandroid.ui.fragment.knowledage.KnowledgeFragment;
 import com.wujie.minewanandroid.ui.fragment.MineFragment;
-import com.wujie.minewanandroid.ui.fragment.NavigationFragment;
+import com.wujie.minewanandroid.ui.fragment.navigation.NavigationFragment;
 import com.wujie.minewanandroid.ui.fragment.home.HomeFragment;
 
 import java.util.ArrayList;

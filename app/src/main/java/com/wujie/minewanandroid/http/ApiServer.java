@@ -6,6 +6,7 @@ import com.wujie.minewanandroid.bean.BaseBean;
 import com.wujie.minewanandroid.bean.HomeBean;
 import com.wujie.minewanandroid.bean.HttpsRequest;
 import com.wujie.minewanandroid.bean.KnowledgeBean;
+import com.wujie.minewanandroid.bean.NavigationBean;
 import com.wujie.minewanandroid.bean.PageListDataBean;
 
 import java.util.List;
@@ -59,4 +60,7 @@ public interface ApiServer {
 
     @GET("tree/json")
     Observable<BaseBean<List<KnowledgeBean>>> getKnowledge();
+
+    @GET("navi/json")
+    Observable<BaseBean<List<NavigationBean>>> getNavigation();
 }
