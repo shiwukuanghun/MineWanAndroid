@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.wujie.minewanandroid.R;
+import com.wujie.minewanandroid.loading.LoadingController;
 import com.wujie.minewanandroid.presenter.BasePresenter;
 import com.wujie.minewanandroid.view.IBaseView;
 
@@ -24,7 +25,7 @@ import butterknife.Unbinder;
 public abstract class BaseFragment<P extends BasePresenter<V>, V extends IBaseView> extends Fragment implements IBaseView {
 
     protected P mPresenter;
-
+    protected LoadingController mLoadingController;
     Unbinder unbinder;
 
     @Nullable
@@ -73,28 +74,56 @@ public abstract class BaseFragment<P extends BasePresenter<V>, V extends IBaseVi
         unbinder.unbind();
     }
 
+    protected void initLoading(View view) {
+        mLoadingController = new LoadingController.Builder(getContext(), view)
+                .setLoadingImageResource(R.drawable.loading_frame_anim)
+                .setLoadingMessage("加载中...")
+                .setErrorMessage("网络不给力")
+//                .setEmptyViewImageResource(getEmptyImg())
+//                .setErrorImageResoruce(R.mipmap.net_error)
+                .setEmptyMessage(getEmptyMsg())
+                .setOnNetworkErrorRetryClickListener(() -> {
+
+                })
+                .setOnErrorRetryClickListener("点我重试", () -> retry())
+                .setOnEmptyTodoClickListener(getEmptyTodoText(), () -> emptyTodo())
+                .build();
+    }
+
+    protected void retry(){}
+
+    protected String getEmptyMsg() {
+        return "未找到相关内容";
+    }
+
+    protected String getEmptyTodoText() {
+        return null;
+    }
+
+    protected void emptyTodo() {}
+
     @Override
     public void showLoading(String msg) {
-
+        mLoadingController.showLoading();
     }
 
     @Override
     public void hideLoading() {
-
+        mLoadingController.dismissLoading();
     }
 
     @Override
     public void showError() {
-
+        mLoadingController.showError();
     }
 
     @Override
     public void showFailure(String msg) {
-
+        mLoadingController.showNetworkError();
     }
 
     @Override
     public void showEmpty() {
-
+        mLoadingController.showEmpty();
     }
 }

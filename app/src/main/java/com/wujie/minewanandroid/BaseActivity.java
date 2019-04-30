@@ -5,9 +5,12 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.wujie.minewanandroid.loading.LoadingController;
+import com.wujie.minewanandroid.loading.LoadingInterface;
 import com.wujie.minewanandroid.presenter.BasePresenter;
 import com.wujie.minewanandroid.view.IBaseView;
 
@@ -26,6 +29,7 @@ public abstract class BaseActivity<P extends BasePresenter<V>, V extends IBaseVi
     protected P mPresenter;
     protected Context mContext;
     protected CompositeDisposable mCompositeDisposable;
+    protected LoadingController mLoadingController;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -70,6 +74,49 @@ public abstract class BaseActivity<P extends BasePresenter<V>, V extends IBaseVi
         }
     }
 
+    protected void initLoading(View view) {
+        mLoadingController = new LoadingController.Builder(this, view)
+//                .setLoadingImageResource(R.drawable.common_loading_frame_anim)
+                .setLoadingMessage("加载中...")
+                .setErrorMessage("网络不给力")
+//                .setEmptyViewImageResource(getEmptyImg())
+//                .setErrorImageResoruce(R.mipmap.net_error)
+                .setEmptyMessage(getEmptyMsg())
+                .setOnNetworkErrorRetryClickListener(new LoadingInterface.OnClickListener() {
+                    @Override
+                    public void onClick() {
+
+                    }
+                })
+                .setOnErrorRetryClickListener("点我重试", new LoadingInterface.OnClickListener() {
+                    @Override
+                    public void onClick() {
+                        retry();
+                    }
+                }) .setOnEmptyTodoClickListener(getEmptyTodoText(), new LoadingInterface.OnClickListener() {
+                    @Override
+                    public void onClick() {
+                        emptyTodo();
+                    }
+                })
+                .build();
+    }
+
+    protected void retry() {}
+
+    protected String getEmptyMsg() {
+        return "未找到相关内容";
+    }
+
+//    protected int getEmptyImg(){
+//        return R.mipmap.search_empty;
+//    }
+
+    protected String getEmptyTodoText() {
+        return null;
+    }
+
+    protected void emptyTodo() {}
 
     @Override
     public void showLoading(String msg) {

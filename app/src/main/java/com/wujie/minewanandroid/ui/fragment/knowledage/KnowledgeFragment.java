@@ -31,7 +31,6 @@ public class KnowledgeFragment extends BaseFragment<KnowledgePresenter, Knowledg
     RecyclerView mRvKnowledge;
     @BindView(R.id.msl)
     SmartRefreshLayout mMsl;
-    Unbinder unbinder;
     private KnowledgeAdapter mKnowledgeAdapter;
 
     @Override
@@ -46,6 +45,7 @@ public class KnowledgeFragment extends BaseFragment<KnowledgePresenter, Knowledg
 
     @Override
     protected void init(View view) {
+        initLoading(mMsl);
         List<KnowledgeBean> knowledgeBeanList = new ArrayList<>();
         mRvKnowledge.setHasFixedSize(true);
         mRvKnowledge.setLayoutManager(new LinearLayoutManager(getContext()));
